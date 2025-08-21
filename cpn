@@ -1,3 +1,10 @@
 #!/bin/bash
-basename "$1" | xclip -selection clipboard
-echo "copied!"
+
+if [ -z "$1" ]; then
+    echo "Usage: cpn <file>"
+    exit 1
+fi
+
+name=$(basename "$1")
+echo -n "$name" | xclip -selection clipboard
+echo "copied: $name"
